@@ -20,6 +20,7 @@ const socials = [
 ] as const;
 
 const socialWordByKey: Partial<Record<(typeof socials)[number]["key"], string>> = {
+  github: "Github",
   linkedin: "LinkedIn",
   twitter: "Twitter",
   medium: "Medium",
