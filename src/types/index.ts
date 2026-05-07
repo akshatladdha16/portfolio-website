@@ -16,7 +16,7 @@ export interface Project {
   title: string;
   shortDescription: string;
   fullDescription: string;
-  youtubeUrl: string;
+  youtubeUrl?: string;
   tags: string[];
   links: ProjectLinks;
 }

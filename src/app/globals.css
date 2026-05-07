@@ -2,10 +2,9 @@
 @import "tw-animate-css";
 
 @theme inline {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    monospace;
-  --font-heading: var(--font-heading), "SF Pro Rounded", ui-rounded, system-ui, sans-serif;
+  --font-sans: var(--font-main), "Circular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-mono), "Source Code Pro", "Office Code Pro", Menlo, monospace;
+  --font-heading: var(--font-main), "Circular", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -28,44 +27,48 @@
 
   --radius-sm: 6px;
   --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-lg: 16px;
   --radius-xl: 9999px;
 }
 
 :root {
-  --primary: #000000;
-  --primary-foreground: #ffffff;
-  --ink: #000000;
-  --ink-deep: #090909;
-  --charcoal: #525252;
-  --body: #737373;
-  --mute: #a3a3a3;
-  --canvas: #ffffff;
-  --surface-soft: #fafafa;
-  --surface-card: #ffffff;
-  --hairline: #e5e5e5;
-  --hairline-strong: #d4d4d4;
-  --surface-dark: #171717;
-  --on-dark: #ffffff;
-  --on-dark-mute: rgba(255, 255, 255, 0.7);
-  --focus-ring: rgba(59, 130, 246, 0.5);
+  --brand: #3ecf8e;
+  --brand-link: #00c573;
+  --brand-border: rgba(62, 207, 142, 0.3);
+  --canvas-deep: #0f0f0f;
+  --canvas: #171717;
+  --surface-soft: rgba(41, 41, 41, 0.84);
+  --surface-card: #171717;
+  --ink: #fafafa;
+  --ink-deep: #efefef;
+  --charcoal: #b4b4b4;
+  --body: #898989;
+  --mute: #4d4d4d;
+  --hairline-subtle: #242424;
+  --hairline: #2e2e2e;
+  --hairline-strong: #363636;
+  --hairline-emphasis: #393939;
+  --focus-ring: rgba(62, 207, 142, 0.25);
 
   --background: var(--canvas);
   --foreground: var(--ink);
   --card: var(--surface-card);
-  --card-foreground: var(--ink);
-  --popover: var(--canvas);
+  --card-foreground: var(--ink-deep);
+  --popover: var(--canvas-deep);
   --popover-foreground: var(--ink);
-  --secondary: var(--canvas);
+  --primary: var(--canvas-deep);
+  --primary-foreground: var(--ink);
+  --secondary: var(--surface-soft);
   --secondary-foreground: var(--ink);
-  --muted: var(--surface-soft);
+  --muted: hsl(0 0% 16%);
   --muted-foreground: var(--body);
-  --accent: var(--surface-soft);
+  --accent: hsl(148 31% 22% / 0.25);
   --accent-foreground: var(--ink);
-  --destructive: #b91c1c;
+  --destructive: hsl(6 100% 61% / 0.7);
   --border: var(--hairline);
   --input: var(--hairline);
   --ring: var(--focus-ring);
+  --radius: var(--radius-md);
 }
 
 @layer base {
@@ -76,6 +79,7 @@
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+    background: var(--canvas);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -86,10 +90,29 @@
 
   body {
     @apply bg-background text-foreground;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(62, 207, 142, 0.1), transparent 28%),
+      radial-gradient(circle at 82% 18%, hsla(251, 63.2%, 63.2%, 0.08), transparent 34%),
+      linear-gradient(180deg, #171717 0%, #141414 48%, #0f0f0f 100%);
+    min-height: 100vh;
   }
 
   ::selection {
-    background: #e5e5e5;
+    background: hsla(148, 61%, 53%, 0.25);
     color: var(--ink);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+  }
+
+  a {
+    color: inherit;
   }
 }

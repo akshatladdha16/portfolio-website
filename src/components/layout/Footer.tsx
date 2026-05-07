@@ -11,12 +11,19 @@ const socials = [
   { key: "email", label: "Email", icon: Mail },
 ] as const;
 
+const socialWordByKey: Partial<Record<(typeof socials)[number]["key"], string>> = {
+  linkedin: "LinkedIn",
+  twitter: "Twitter",
+  medium: "Medium",
+  email: "Mail",
+};
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[var(--hairline)] pb-10 pt-16">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 text-sm text-[var(--body)] sm:px-6 lg:px-8">
+    <footer className="border-t border-[var(--hairline-subtle)] pb-10 pt-12 min-[600px]:pt-16">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 text-sm text-[var(--body)] min-[600px]:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           {socials.map(({ key, label, icon: Icon }) => {
             const value = siteConfig.socials[key];
@@ -33,14 +40,18 @@ export function Footer() {
                 target={key === "email" ? "_self" : "_blank"}
                 rel={key === "email" ? undefined : "noopener noreferrer"}
                 aria-label={label}
-                className="text-[var(--body)] transition-colors hover:text-[var(--ink)]"
+                className="text-[var(--body)] transition-colors hover:text-[var(--brand-link)]"
               >
-                <Icon className="size-4" />
+                {socialWordByKey[key] ? (
+                  <span className="text-sm">{socialWordByKey[key]}</span>
+                ) : (
+                  <Icon className="size-4" />
+                )}
               </a>
             );
           })}
         </div>
-        <p>© {year} {siteConfig.name}</p>
+        <p className="font-mono text-[11px] tracking-[1.2px] uppercase">© {year} {siteConfig.name}</p>
       </div>
     </footer>
   );

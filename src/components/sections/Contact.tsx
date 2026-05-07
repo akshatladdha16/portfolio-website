@@ -19,6 +19,13 @@ const socials = [
   { key: "email", label: "Email", icon: Mail },
 ] as const;
 
+const socialWordByKey: Partial<Record<(typeof socials)[number]["key"], string>> = {
+  linkedin: "LinkedIn",
+  twitter: "Twitter",
+  medium: "Medium",
+  email: "Mail",
+};
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function Contact() {
@@ -79,9 +86,10 @@ export function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="scroll-mt-24 px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-[88px]"
+      className="scroll-mt-24 border-t border-[var(--hairline-subtle)] px-4 py-12 min-[600px]:px-6 min-[600px]:py-16 lg:px-8 lg:py-[96px]"
     >
       <div className="mx-auto w-full max-w-6xl">
+        <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Let&apos;s build</p>
         <motion.h2
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
           animate={
@@ -90,15 +98,22 @@ export function Contact() {
               : { opacity: inView ? 1 : 0, y: inView ? 0 : 20 }
           }
           transition={{ duration: 0.4 }}
-          className="font-heading text-3xl font-semibold text-[var(--ink)]"
+          className="mt-3 text-4xl leading-[1.1] tracking-tight text-[var(--ink)]"
         >
           Get in Touch
         </motion.h2>
 
-        <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2">
-          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+        <div className="mt-8 grid grid-cols-1 gap-10 min-[600px]:grid-cols-2">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] p-5"
+            noValidate
+          >
             <div className="space-y-2">
-              <label htmlFor="name" className="text-sm text-[var(--charcoal)]">
+              <label
+                htmlFor="name"
+                className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase"
+              >
                 Name
               </label>
               <Input
@@ -106,12 +121,14 @@ export function Contact() {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 required
-                className="rounded-full"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm text-[var(--charcoal)]">
+              <label
+                htmlFor="email"
+                className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase"
+              >
                 Email
               </label>
               <Input
@@ -120,12 +137,14 @@ export function Contact() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                className="rounded-full"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm text-[var(--charcoal)]">
+              <label
+                htmlFor="message"
+                className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase"
+              >
                 Message
               </label>
               <Textarea
@@ -134,20 +153,27 @@ export function Contact() {
                 onChange={(event) => setMessage(event.target.value)}
                 required
                 rows={5}
-                className="rounded-2xl"
               />
             </div>
 
-            <Button type="submit" className="rounded-full" disabled={isSubmitting || !canSubmit}>
+            <Button type="submit" disabled={isSubmitting || !canSubmit}>
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
 
-          <div className="space-y-4">
-            <p className="text-[var(--body)]">
+          <div className="space-y-5 rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] p-6">
+            <p className="text-[var(--charcoal)]">
               I am always open to discussing engineering opportunities, collaboration ideas,
               and product problems worth solving.
             </p>
+            {siteConfig.email.trim() ? (
+              <a href={toMailto(siteConfig.email)} className="text-[var(--brand-link)]">
+                {siteConfig.email}
+              </a>
+            ) : (
+              <p className="text-sm text-[var(--body)]">Set your contact email in site config to show it here.</p>
+            )}
+            <div className="h-px w-full bg-[var(--hairline)]" />
             <div className="flex items-center gap-4">
               {socials.map(({ key, label, icon: Icon }) => {
                 const value = siteConfig.socials[key];
@@ -164,9 +190,13 @@ export function Contact() {
                     target={key === "email" ? "_self" : "_blank"}
                     rel={key === "email" ? undefined : "noopener noreferrer"}
                     aria-label={label}
-                    className="text-[var(--body)] transition-colors hover:text-[var(--ink)]"
+                    className="text-[var(--body)] transition-colors hover:text-[var(--brand-link)]"
                   >
-                    <Icon className="size-5" />
+                    {socialWordByKey[key] ? (
+                      <span className="text-sm">{socialWordByKey[key]}</span>
+                    ) : (
+                      <Icon className="size-5" />
+                    )}
                   </a>
                 );
               })}

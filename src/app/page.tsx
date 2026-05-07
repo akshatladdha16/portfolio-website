@@ -5,12 +5,10 @@ import { Projects } from "@/components/sections/Projects";
 
 export default function Home() {
   return (
-    <div className="pb-10 pt-0">
+    <div className="pb-10">
       <Hero />
       <Projects />
       <Blogs />
-      {/* TODO: Enable this section when content is ready. */}
-      {/* <Achievements /> */}
       <Contact />
     </div>
   );

@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Nunito } from "next/font/google";
+import { Manrope, Source_Code_Pro } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const headingFont = Nunito({
-  variable: "--font-heading",
+const primaryFont = Manrope({
+  variable: "--font-main",
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["400", "500"],
 });
 
-const monoFont = Geist_Mono({
+const monoFont = Source_Code_Pro({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -45,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${headingFont.variable} ${monoFont.variable} h-full antialiased`}>
+    <html lang="en" className={`${primaryFont.variable} ${monoFont.variable} h-full antialiased`}>
       <body className="min-h-full bg-[var(--canvas)] text-[var(--ink)]">
         <a
           href="#main-content"

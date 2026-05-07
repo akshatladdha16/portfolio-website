@@ -16,26 +16,22 @@ export function BlogCard({ blog }: BlogCardProps) {
       href={blog.mediumUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex h-full flex-col gap-4 rounded-xl border border-[var(--hairline)] bg-[var(--surface-card)] p-5 transition-all duration-150 hover:-translate-y-0.5 hover:border-[var(--hairline-strong)]"
+      className="group flex h-full flex-col gap-4 rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] p-5 transition-all duration-200 hover:border-[var(--brand-border)]"
     >
-      <h3 className="text-lg font-medium text-[var(--ink)]">{blog.title}</h3>
+      <h3 className="text-2xl leading-[1.33] tracking-[-0.16px] text-[var(--ink)]">{blog.title}</h3>
       <p className="line-clamp-3 text-sm text-[var(--body)]">{blog.excerpt}</p>
 
       <div className="flex flex-wrap gap-2">
         {blog.tags.map((tag) => (
-          <Badge
-            key={tag}
-            variant="outline"
-            className="rounded-full px-3 py-1 font-mono text-xs"
-          >
+          <Badge key={tag} variant="outline" className="font-mono">
             {tag}
           </Badge>
         ))}
       </div>
 
       <div className="mt-auto flex items-center justify-between text-sm text-[var(--charcoal)]">
-        <span className="font-mono">{dateLabel}</span>
-        <span className="inline-flex items-center gap-1">
+        <span className="font-mono text-[11px] tracking-[1.2px] uppercase">{dateLabel}</span>
+        <span className="inline-flex items-center gap-1 text-[var(--brand-link)]">
           Read on Medium <ArrowUpRight className="size-4" />
         </span>
       </div>

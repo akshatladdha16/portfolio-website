@@ -15,10 +15,11 @@ export function Blogs() {
     return (
       <section
         id="blogs"
-        className="scroll-mt-24 px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-[88px]"
+        className="scroll-mt-24 border-t border-[var(--hairline-subtle)] px-4 py-12 min-[600px]:px-6 min-[600px]:py-16 lg:px-8 lg:py-[96px]"
       >
         <div className="mx-auto w-full max-w-6xl">
-          <h2 className="font-heading text-3xl font-semibold text-[var(--ink)]">Blogs</h2>
+          <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Writing</p>
+          <h2 className="mt-3 text-4xl leading-[1.1] tracking-tight text-[var(--ink)]">Blogs</h2>
           <p className="mt-4 text-[var(--body)]">Blog posts will appear here soon.</p>
         </div>
       </section>
@@ -29,9 +30,10 @@ export function Blogs() {
     <section
       id="blogs"
       ref={ref}
-      className="scroll-mt-24 px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-[88px]"
+      className="scroll-mt-24 border-t border-[var(--hairline-subtle)] px-4 py-12 min-[600px]:px-6 min-[600px]:py-16 lg:px-8 lg:py-[96px]"
     >
       <div className="mx-auto w-full max-w-6xl">
+        <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Writing</p>
         <motion.h2
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
           animate={
@@ -40,12 +42,12 @@ export function Blogs() {
               : { opacity: inView ? 1 : 0, y: inView ? 0 : 20 }
           }
           transition={{ duration: 0.4 }}
-          className="font-heading text-3xl font-semibold text-[var(--ink)]"
+          className="mt-3 text-4xl leading-[1.1] tracking-tight text-[var(--ink)]"
         >
           Blogs
         </motion.h2>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 min-[600px]:grid-cols-2 lg:grid-cols-3">
           {siteConfig.blogs.map((blog, index) => (
             <motion.div
               key={blog.id}
