@@ -33,7 +33,7 @@ export function Blogs() {
       className="scroll-mt-24 border-t border-[var(--hairline-subtle)] px-4 py-12 min-[600px]:px-6 min-[600px]:py-16 lg:px-8 lg:py-[96px]"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Writing</p>
+        <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Blogs</p>
         <motion.h2
           initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
           animate={
@@ -44,7 +44,7 @@ export function Blogs() {
           transition={{ duration: 0.4 }}
           className="mt-3 text-4xl leading-[1.1] tracking-tight text-[var(--ink)]"
         >
-          Blogs
+          I love to write and share my learnings, have a look at it maybe?
         </motion.h2>
 
         <div className="mt-8 grid grid-cols-1 gap-4 min-[600px]:grid-cols-2 lg:grid-cols-3">
