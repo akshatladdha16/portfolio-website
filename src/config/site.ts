@@ -1,4 +1,4 @@
-import type { Blog, Project, SocialLinks } from "@/types";
+import type { Blog, HeroImage, Project, SocialLinks } from "@/types";
 
 interface SiteConfig {
   name: string;
@@ -7,6 +7,7 @@ interface SiteConfig {
   resumeUrl: string;
   email: string;
   socials: SocialLinks;
+  heroImages: HeroImage[];
   projects: Project[];
   blogs: Blog[];
 }
@@ -29,6 +30,33 @@ export const siteConfig: SiteConfig = {
     medium: "https://medium.com/@laddhaakshatrai",
     email: "laddhaakshatrai@gmail.com",
   },
+  heroImages: [
+    {
+      src: "https://picsum.photos/id/1011/1200/700",
+      alt: "Mountain lake view",
+      caption: "Shipping calm, resilient systems at scale.",
+    },
+    {
+      src: "https://picsum.photos/id/1005/800/1200",
+      alt: "Aerial coast shoreline",
+      caption: "Balancing architecture depth with product speed.",
+    },
+    {
+      src: "https://picsum.photos/id/1041/1400/900",
+      alt: "Forest road from above",
+      caption: "End-to-end ownership across product and platform.",
+    },
+    {
+      src: "https://picsum.photos/id/1025/1100/700",
+      alt: "Dog portrait close up",
+      caption: "Developer-first execution with practical AI outcomes.",
+    },
+    {
+      src: "https://picsum.photos/id/1036/900/1300",
+      alt: "Mountain range with clouds",
+      caption: "Exploring ideas, then hardening what works.",
+    },
+  ],
   projects: [
 {
   id: "project-01",
