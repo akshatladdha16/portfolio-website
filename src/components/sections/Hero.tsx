@@ -54,8 +54,9 @@ export function Hero() {
       className="scroll-mt-24 relative flex min-h-screen items-center justify-center px-4 pb-16 pt-28 min-[600px]:pb-20 min-[600px]:pt-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(62,207,142,0.32),transparent)]" />
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12">
-        <div className="flex flex-col items-start text-left">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-start">
+        <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-12">
+          <div className="flex flex-col items-start text-left">
           <motion.p
             {...baseMotion}
             transition={{ duration: 0.45 }}
@@ -149,35 +150,37 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <motion.div
-            {...baseMotion}
-            transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.35 }}
-            className="mt-14 grid w-full grid-cols-1 gap-4 min-[600px]:mt-20 min-[600px]:grid-cols-3"
-          >
-            <div className="rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] px-5 py-4">
-              <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Focus</p>
-              <p className="mt-2 text-[var(--ink)]">AI systems, full-stack engineering, developer tooling.</p>
-            </div>
-            <div className="rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] px-5 py-4">
-              <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Approach</p>
-              <p className="mt-2 text-[var(--ink)]">Ship practical products with strong UX and measurable outcomes.</p>
-            </div>
-            <div className="rounded-2xl border border-[var(--brand-border)] bg-[hsl(148_40%_17%_/_0.18)] px-5 py-4">
-              <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--brand)] uppercase">Open to work</p>
-              <p className="mt-2 text-[var(--ink)]">Available for engineering roles and project collaborations.</p>
-            </div>
-          </motion.div>
+          </div>
+
+          {siteConfig.heroImages.length > 0 ? (
+            <motion.div
+              {...baseMotion}
+              transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.3 }}
+              className="w-full lg:pt-2"
+            >
+              <HeroImageCarousel images={siteConfig.heroImages} />
+            </motion.div>
+          ) : null}
         </div>
 
-        {siteConfig.heroImages.length > 0 ? (
-          <motion.div
-            {...baseMotion}
-            transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.3 }}
-            className="w-full"
-          >
-            <HeroImageCarousel images={siteConfig.heroImages} />
-          </motion.div>
-        ) : null}
+        <motion.div
+          {...baseMotion}
+          transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.35 }}
+          className="mt-10 grid w-full grid-cols-1 gap-4 min-[600px]:mt-12 min-[600px]:grid-cols-3"
+        >
+          <div className="rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] px-5 py-4">
+            <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Focus</p>
+            <p className="mt-2 text-[var(--ink)]">AI systems, full-stack engineering, developer tooling.</p>
+          </div>
+          <div className="rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] px-5 py-4">
+            <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Approach</p>
+            <p className="mt-2 text-[var(--ink)]">Ship practical products with strong UX and measurable outcomes.</p>
+          </div>
+          <div className="rounded-2xl border border-[var(--brand-border)] bg-[hsl(148_40%_17%_/_0.18)] px-5 py-4">
+            <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--brand)] uppercase">Open to work</p>
+            <p className="mt-2 text-[var(--ink)]">Available for engineering roles and project collaborations.</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

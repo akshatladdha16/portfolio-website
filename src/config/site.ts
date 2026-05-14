@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
     "Forward Deployed Engineer",
     "Solutions Engineer",
   ],
-  tagline: "Building practical AI systems and developer-first products.",
+  tagline: "Software Engineer who can work in sales, and Sales engineer who loves to build reliable software. ",
   resumeUrl: "https://drive.google.com/file/d/1ij4aUSP3eyelXvOKdZQdp36Xogxhk0jp/view?usp=sharing",
   email: "laddhaakshatrai@gmail.com",
   socials: {
@@ -32,27 +32,27 @@ export const siteConfig: SiteConfig = {
   },
   heroImages: [
     {
-      src: "https://picsum.photos/id/1011/1200/700",
-      alt: "Mountain lake view",
-      caption: "Shipping calm, resilient systems at scale.",
+      src: "/assets/pp.jpg",
+      alt: "Gitex AI Dubai 2025",
+      caption: "GITEX AI Festival in Duabi 13th to 18th Oct 2025",
     },
     {
-      src: "https://picsum.photos/id/1005/800/1200",
+      src: "/assets/hero/hero-02.jpg",
       alt: "Aerial coast shoreline",
       caption: "Balancing architecture depth with product speed.",
     },
     {
-      src: "https://picsum.photos/id/1041/1400/900",
+      src: "/assets/hero/hero-03.jpg",
       alt: "Forest road from above",
       caption: "End-to-end ownership across product and platform.",
     },
     {
-      src: "https://picsum.photos/id/1025/1100/700",
+      src: "/assets/hero/hero-04.jpg",
       alt: "Dog portrait close up",
       caption: "Developer-first execution with practical AI outcomes.",
     },
     {
-      src: "https://picsum.photos/id/1036/900/1300",
+      src: "/assets/hero/hero-05.jpg",
       alt: "Mountain range with clouds",
       caption: "Exploring ideas, then hardening what works.",
     },

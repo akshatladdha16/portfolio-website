@@ -63,8 +63,7 @@ export function HeroImageCarousel({ images }: HeroImageCarouselProps) {
 
   return (
     <div className="relative w-full">
-      <div className="relative mx-auto h-[28rem] w-full max-w-[36rem] overflow-hidden rounded-3xl border border-[var(--hairline)] bg-[var(--canvas-deep)]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(62,207,142,0.08),transparent_60%)]" />
+      <div className="relative mx-auto h-[23rem] w-full max-w-[34rem] overflow-hidden">
 
         {cards.map((card) => {
           const isCenter = card.offset === 0;
@@ -84,7 +83,7 @@ export function HeroImageCarousel({ images }: HeroImageCarouselProps) {
                 zIndex: isCenter ? 30 : isVisible ? 20 : 10,
               }}
               transition={transition}
-              className="absolute left-1/2 top-1/2 h-[78%] w-[62%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-[var(--hairline-emphasis)] bg-black"
+              className="absolute left-1/2 top-1/2 h-[82%] w-[64%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-[var(--hairline-emphasis)] bg-black"
             >
               <Image src={card.src} alt={card.alt} fill sizes="(min-width: 1024px) 30vw, 80vw" className="object-cover" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/95 via-white/70 to-transparent" />
@@ -95,28 +94,24 @@ export function HeroImageCarousel({ images }: HeroImageCarouselProps) {
           );
         })}
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center pb-4">
-          <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-[var(--hairline-strong)] bg-[rgba(15,15,15,0.75)] p-1 backdrop-blur">
-            <button
-              type="button"
-              aria-label="Previous image"
-              onClick={() => move(-1)}
-              disabled={isTransitioning || total <= 1}
-              className="inline-flex size-8 items-center justify-center rounded-full border border-[var(--hairline)] text-[var(--ink)] transition-colors hover:border-[var(--hairline-strong)] hover:bg-[var(--surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              <ChevronLeft className="size-4" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next image"
-              onClick={() => move(1)}
-              disabled={isTransitioning || total <= 1}
-              className="inline-flex size-8 items-center justify-center rounded-full border border-[var(--hairline)] text-[var(--ink)] transition-colors hover:border-[var(--hairline-strong)] hover:bg-[var(--surface-soft)] disabled:cursor-not-allowed disabled:opacity-45"
-            >
-              <ChevronRight className="size-4" />
-            </button>
-          </div>
-        </div>
+        <button
+          type="button"
+          aria-label="Previous image"
+          onClick={() => move(-1)}
+          disabled={isTransitioning || total <= 1}
+          className="absolute left-[14%] top-1/2 z-40 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--hairline-strong)] bg-[rgba(15,15,15,0.72)] text-[var(--ink)] backdrop-blur transition-colors hover:border-[var(--hairline-emphasis)] hover:bg-[rgba(23,23,23,0.9)] disabled:cursor-not-allowed disabled:opacity-45"
+        >
+          <ChevronLeft className="size-4" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next image"
+          onClick={() => move(1)}
+          disabled={isTransitioning || total <= 1}
+          className="absolute right-[14%] top-1/2 z-40 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--hairline-strong)] bg-[rgba(15,15,15,0.72)] text-[var(--ink)] backdrop-blur transition-colors hover:border-[var(--hairline-emphasis)] hover:bg-[rgba(23,23,23,0.9)] disabled:cursor-not-allowed disabled:opacity-45"
+        >
+          <ChevronRight className="size-4" />
+        </button>
       </div>
     </div>
   );
