@@ -67,12 +67,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Contact email is not configured" }, { status: 500 });
     }
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || "Portfolio <onboarding@resend.dev>";
+
     await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: fromEmail,
       to: recipient,
       subject: "Message from Website Visitor",
       replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      text: `New contact form submission\n\nName: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`,
     });
 
     return NextResponse.json({ success: true });
