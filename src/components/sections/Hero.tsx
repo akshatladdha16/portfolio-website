@@ -114,7 +114,7 @@ export function Hero() {
           >
             <div className="flex flex-wrap items-center gap-3">
               <Button asChild>
-                <a href="#projects">Start your project</a>
+                <a href="#projects">My work</a>
               </Button>
               <Button asChild variant="outline">
                 <a href="#contact">Contact me</a>
