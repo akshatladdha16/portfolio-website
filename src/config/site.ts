@@ -1,4 +1,4 @@
-import type { Blog, Project, SocialLinks } from "@/types";
+import type { Blog, HeroImage, Project, SocialLinks } from "@/types";
 
 interface SiteConfig {
   name: string;
@@ -7,6 +7,7 @@ interface SiteConfig {
   resumeUrl: string;
   email: string;
   socials: SocialLinks;
+  heroImages: HeroImage[];
   projects: Project[];
   blogs: Blog[];
 }
@@ -19,7 +20,7 @@ export const siteConfig: SiteConfig = {
     "Forward Deployed Engineer",
     "Solutions Engineer",
   ],
-  tagline: "Building practical AI systems and developer-first products.",
+  tagline: "Software Engineer who can work in sales, and Sales engineer who loves to build reliable software. ",
   resumeUrl: "https://drive.google.com/file/d/1ij4aUSP3eyelXvOKdZQdp36Xogxhk0jp/view?usp=sharing",
   email: "laddhaakshatrai@gmail.com",
   socials: {
@@ -29,6 +30,58 @@ export const siteConfig: SiteConfig = {
     medium: "https://medium.com/@laddhaakshatrai",
     email: "laddhaakshatrai@gmail.com",
   },
+  heroImages: [
+    {
+      src: "/assets/20250902_145439.jpg",
+      alt: "Hero image 20250902_145439",
+      caption: "Self hosted LLMs , built mini cluster on mac mini",
+    },
+    {
+      src: "/assets/20251014_181648.jpg",
+      alt: "Hero image 20251014_181648",
+      caption: "With Ismael Faro, VP AI Foundations Engineering at IBM Research",
+    },
+    {
+      src: "/assets/20251017_090915.jpg",
+      alt: "Hero image 20251017_090915",
+      caption: "with high rise in Dubai",
+    },
+    {
+      src: "/assets/20251017_092745.jpg",
+      alt: "Hero image 20251017_092745",
+      caption: "At GITEX AI Festival 2025, Dubai",
+    },
+    {
+      src: "/assets/IMG_7596.jpeg",
+      alt: "Hero image IMG_7596",
+      caption: "I hike, Chandrashila trek Jan 2026",
+    },
+    {
+      src: "/assets/IMG-20231016-WA0120.jpg",
+      alt: "Hero image IMG-20231016-WA0120",
+      caption: "InterNIT Silver Medalist 2024 Badminton Captain",
+    },
+    {
+      src: "/assets/IMG-20241130-WA0032.jpg",
+      alt: "Hero image IMG-20241130-WA0032",
+      caption: "NITW Convocation Batch of 2024",
+    },
+    {
+      src: "/assets/IMG-20251014-WA0057.jpg",
+      alt: "Hero image IMG-20251014-WA0057",
+      caption: "With Ismael Faro, explaining the next edge innovation he was working on at IBM Research",
+    },
+    {
+      src: "/assets/IMG-20251016-WA0071.jpg",
+      alt: "Hero image IMG-20251016-WA0071",
+      caption: "With Managing director of a Healthcare Fortune 500 company on the sidelines of GITEX AI Festival 2025, Dubai",
+    },
+    {
+      src: "/assets/IMG-20251025-WA0042.jpg",
+      alt: "Hero image IMG-20251025-WA0042",
+      caption: "GITEX AI DUBAI 2025",
+    },
+  ],
   projects: [
 {
   id: "project-01",

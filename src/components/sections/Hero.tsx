@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BookOpenText, Link2, Mail, MessageCircle, UserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
+import { HeroImageCarousel } from "@/components/sections/HeroImageCarousel";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { toMailto } from "@/lib/utils";
@@ -53,104 +54,119 @@ export function Hero() {
       className="scroll-mt-24 relative flex min-h-screen items-center justify-center px-4 pb-16 pt-28 min-[600px]:pb-20 min-[600px]:pt-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(62,207,142,0.32),transparent)]" />
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-start text-left">
-        <motion.p
-          {...baseMotion}
-          transition={{ duration: 0.45 }}
-          className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase"
-        >
-          Developer Portfolio
-        </motion.p>
-
-        <motion.h1
-          {...baseMotion}
-          transition={{ duration: 0.45 }}
-          className="mt-4 max-w-5xl text-[2.65rem] leading-[1] tracking-[-0.04em] text-[var(--ink)] min-[600px]:text-[4.5rem]"
-        >
-          {siteConfig.name}
-        </motion.h1>
-
-        <motion.div
-          {...baseMotion}
-          transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.12 }}
-          className="mt-5 min-h-7 text-base text-[var(--charcoal)] min-[600px]:text-lg"
-        >
-          {shouldReduceMotion ? (
-            <span>{roles.join(" · ")}</span>
-          ) : (
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentRole}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                className="inline-flex items-center gap-1 font-mono text-[0.78rem] tracking-[1.2px] uppercase"
-              >
-                {currentRole}
-                <span className="animate-pulse">▌</span>
-              </motion.span>
-            </AnimatePresence>
-          )}
-        </motion.div>
-
-        {siteConfig.tagline ? (
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-start">
+        <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-12">
+          <div className="flex flex-col items-start text-left">
           <motion.p
             {...baseMotion}
-            transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.2 }}
-            className="mt-5 max-w-2xl text-[var(--charcoal)]"
+            transition={{ duration: 0.45 }}
+            className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase"
           >
-            {siteConfig.tagline}
+            Developer Portfolio
           </motion.p>
-        ) : null}
 
-        <motion.div
-          {...baseMotion}
-          transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.28 }}
-          className="mt-8 flex w-full flex-col items-start gap-4 min-[600px]:flex-row min-[600px]:items-center"
-        >
-          <div className="flex flex-wrap items-center gap-3">
-            <Button asChild>
-              <a href="#projects">Start your project</a>
-            </Button>
-            <Button asChild variant="outline">
-              <a href="#contact">Contact me</a>
-            </Button>
-          </div>
-          <div className="h-px w-full bg-[var(--hairline-subtle)] min-[600px]:ml-2 min-[600px]:max-w-40" />
-          <div className="flex items-center gap-4">
-            {socials.map(({ key, label, icon: Icon }) => {
-              const value = siteConfig.socials[key];
-              if (!value.trim()) {
-                return null;
-              }
+          <motion.h1
+            {...baseMotion}
+            transition={{ duration: 0.45 }}
+            className="mt-4 max-w-5xl text-[2.65rem] leading-[1] tracking-[-0.04em] text-[var(--ink)] min-[600px]:text-[4.5rem]"
+          >
+            {siteConfig.name}
+          </motion.h1>
 
-              const href = key === "email" ? toMailto(value) : value;
-
-              return (
-                <a
-                  key={key}
-                  href={href}
-                  target={key === "email" ? "_self" : "_blank"}
-                  rel={key === "email" ? undefined : "noopener noreferrer"}
-                  aria-label={label}
-                  className="text-[var(--body)] transition-colors hover:text-[var(--brand-link)]"
+          <motion.div
+            {...baseMotion}
+            transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.12 }}
+            className="mt-5 min-h-7 text-base text-[var(--charcoal)] min-[600px]:text-lg"
+          >
+            {shouldReduceMotion ? (
+              <span>{roles.join(" · ")}</span>
+            ) : (
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentRole}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-flex items-center gap-1 font-mono text-[0.78rem] tracking-[1.2px] uppercase"
                 >
-                  {socialWordByKey[key] ? (
-                    <span className="text-sm">{socialWordByKey[key]}</span>
-                  ) : (
-                    <Icon className="size-5" />
-                  )}
-                </a>
-              );
-            })}
+                  {currentRole}
+                  <span className="animate-pulse">▌</span>
+                </motion.span>
+              </AnimatePresence>
+            )}
+          </motion.div>
+
+          {siteConfig.tagline ? (
+            <motion.p
+              {...baseMotion}
+              transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.2 }}
+              className="mt-5 max-w-2xl text-[var(--charcoal)]"
+            >
+              {siteConfig.tagline}
+            </motion.p>
+          ) : null}
+
+          <motion.div
+            {...baseMotion}
+            transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.28 }}
+            className="mt-8 flex w-full flex-col items-start gap-4 min-[600px]:flex-row min-[600px]:items-center"
+          >
+            <div className="flex flex-wrap items-center gap-3">
+              <Button asChild>
+                <a href="#projects">My work</a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href="#contact">Contact me</a>
+              </Button>
+            </div>
+            <div className="h-px w-full bg-[var(--hairline-subtle)] min-[600px]:ml-2 min-[600px]:max-w-40" />
+            <div className="flex items-center gap-4">
+              {socials.map(({ key, label, icon: Icon }) => {
+                const value = siteConfig.socials[key];
+                if (!value.trim()) {
+                  return null;
+                }
+
+                const href = key === "email" ? toMailto(value) : value;
+
+                return (
+                  <a
+                    key={key}
+                    href={href}
+                    target={key === "email" ? "_self" : "_blank"}
+                    rel={key === "email" ? undefined : "noopener noreferrer"}
+                    aria-label={label}
+                    className="text-[var(--body)] transition-colors hover:text-[var(--brand-link)]"
+                  >
+                    {socialWordByKey[key] ? (
+                      <span className="text-sm">{socialWordByKey[key]}</span>
+                    ) : (
+                      <Icon className="size-5" />
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+
           </div>
-        </motion.div>
+
+          {siteConfig.heroImages.length > 0 ? (
+            <motion.div
+              {...baseMotion}
+              transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.3 }}
+              className="w-full lg:pt-2"
+            >
+              <HeroImageCarousel images={siteConfig.heroImages} />
+            </motion.div>
+          ) : null}
+        </div>
 
         <motion.div
           {...baseMotion}
           transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : 0.35 }}
-          className="mt-14 grid w-full grid-cols-1 gap-4 min-[600px]:mt-20 min-[600px]:grid-cols-3"
+          className="mt-10 grid w-full grid-cols-1 gap-4 min-[600px]:mt-12 min-[600px]:grid-cols-3"
         >
           <div className="rounded-2xl border border-[var(--hairline)] bg-[var(--surface-soft)] px-5 py-4">
             <p className="font-mono text-[11px] tracking-[1.2px] text-[var(--body)] uppercase">Focus</p>

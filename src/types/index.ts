@@ -11,6 +11,12 @@ export interface ProjectLinks {
   live?: string;
 }
 
+export interface HeroImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface Project {
   id: string;
   title: string;
