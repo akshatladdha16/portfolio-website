@@ -81,6 +81,11 @@ export const siteConfig: SiteConfig = {
       alt: "Hero image IMG-20251025-WA0042",
       caption: "GITEX AI DUBAI 2025",
     },
+    {
+      src: "/assets/123229.jpg",
+      alt: "Hero image IMG-20251025-WA0042",
+      caption: "Internal Hackathon to build Query Orchestration Engine, won 1st place in latency focused category",
+    },
   ],
   projects: [
 {
